@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "TT Travels";
+  background-color: #F4F4F5;
+  box-sizing: border-box;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "TT Travels";
+  src: local("TT Travels"),
+    url("./assets/fonts/TTTravels-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "TT Travels Medium";
+  src: local("TT Travels"),
+    url("./assets/fonts/TTTravels-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TT Travels Bold";
+  src: local("TT Travels"),
+    url("./assets/fonts/TTTravels-Bold.ttf") format("truetype");
+  font-weight: 700;
+}

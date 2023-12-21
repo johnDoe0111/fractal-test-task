@@ -1,0 +1,65 @@
+.main {
+  padding: 25px 24px 291px;
+}
+
+.textColor {
+  color: #333333;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  background-color: #d5e4f7;
+  padding: 14px 13px;
+  font-size: 36px;
+  line-height: 52px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+  color: #212830;
+}
+
+.name {
+  font-family: "TT Travels Bold";
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.iconsMargin {
+  padding-top: 8px;
+}
+
+.iconsMargin:not(:first-child) {
+  margin-left: 16px;
+}
+
+.iconsMargin p {
+  margin-left: 4px;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid #00000014;
+  margin-top: 24px;
+}
+
+.form {
+  padding-top: 24px;
+  max-width: 400px;
+  font-family: "TT Travels";
+}
+
+.for
+
+.form p {
+  font-family: "TT Travels Medium";
+  font-size: 14px;
+  line-height: 20px;
+}
