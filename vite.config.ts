@@ -28,6 +28,7 @@ export default defineConfig({
       types: "/src/types",
       constants: "/src/constants",
       validation: "/src/validation",
+      useQueryParams: "/src/useQueryParams"
     },
   },
 })

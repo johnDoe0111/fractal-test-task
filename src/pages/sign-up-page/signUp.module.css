@@ -40,8 +40,8 @@
   margin-left: 16px;
 }
 
-.iconsMargin p {
-  margin-left: 4px;
+.iconsMargin a {
+  margin-left: 5px;
 }
 
 .line {
@@ -56,10 +56,17 @@
   font-family: "TT Travels";
 }
 
-.for
-
-.form p {
+.for .form p {
   font-family: "TT Travels Medium";
   font-size: 14px;
   line-height: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #5558FA;
+}
+
+.buttonStart {
+  padding-top: 48px;
 }

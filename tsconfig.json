@@ -26,8 +26,9 @@
       "types/*": ["types/*"],
       "constants/*": ["constants/*"],
       "validation/*": ["validation/*"],
+      "useQueryParams/*": ["useQueryParams/*"]
     },
   },
-  "include": ["src", "_prettier.cjs"],
+  "include": ["src", "_prettier.cjs", "src/constants.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

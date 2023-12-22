@@ -1,16 +1,15 @@
-body {
+* {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   padding: 0;
-  font-family: "TT Travels";
-  background-color: #F4F4F5;
   box-sizing: border-box;
 }
 
-p {
-  padding: 0;
-  margin: 0;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "TT Travels";
+  background-color: #F4F4F5;
+  box-sizing: border-box;
 }
 
 @font-face {
