@@ -14,6 +14,7 @@ interface aboutFormData {
 
 const ThirdStep = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
@@ -26,6 +27,8 @@ const ThirdStep = () => {
   });
 
   const onSubmit = (data: aboutFormData) => {
+    setModalActive(false);
+    setLoading(true);
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
@@ -39,10 +42,12 @@ const ThirdStep = () => {
         localStorage.setItem("userData", JSON.stringify({ ...userData, res }));
         reset();
         setSuccess(true);
+        setModalActive(true);
       })
       .catch((error) => {
         setSuccess(false);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -58,17 +63,18 @@ const ThirdStep = () => {
         <div className={styles.onboardingButtons}>
           <Button title="Назад" id="button-back" type="button" />
           <Button
-            title="Отправить"
+            title={loading ? "Загрузка..." : "Отправить"}
             id="button-next"
             type="submit"
             setActive={setModalActive}
+            disabled={loading}
           />
         </div>
       </section>
 
       {modalActive ? (
         <ModaLayout setActive={setModalActive}>
-          {success ? (
+          {loading ? null : !loading && success ? (
             <FormModal title="Форма успешно отправлена" success={success} />
           ) : (
             <FormModal title="Ошибка" success={success} />

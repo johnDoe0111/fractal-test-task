@@ -5,6 +5,7 @@ import Button from "components/form/Button";
 import { Group } from "components/form/Group";
 import { useQueryParams } from "hooks/useQueryParams";
 import StepsLayout from "layouts/steps-layout/StepsLayout";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { secondStepSchema } from "validation";
 
@@ -14,6 +15,7 @@ interface aboutFormData {
 
 const SecondStep = () => {
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+  const [loading, setLoading] = useState(false);
 
   const { navigateWithParams } = useQueryParams();
 
@@ -26,6 +28,7 @@ const SecondStep = () => {
   });
 
   const onSubmit = (data: aboutFormData) => {
+    setLoading(true);
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
@@ -34,11 +37,13 @@ const SecondStep = () => {
         };
         resolve(userData);
       }, 2000);
-    }).then((res) => {
-      navigateWithParams("/onboarding", "step", "3");
-      localStorage.setItem("userData", JSON.stringify({ ...userData, res }));
-      reset();
-    });
+    })
+      .then((res) => {
+        navigateWithParams("/onboarding", "step", "3");
+        localStorage.setItem("userData", JSON.stringify({ ...userData, res }));
+        reset();
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -56,7 +61,12 @@ const SecondStep = () => {
 
         <div className={styles.onboardingButtons}>
           <Button title="Назад" id="button-back" type="button" />
-          <Button title="Далее" id="button-next" type="submit" />
+          <Button
+            title={loading ? "Загрузка..." : "Далее"}
+            id="button-next"
+            type="submit"
+            disabled={loading}
+          />
         </div>
       </form>
     </>

@@ -9,9 +9,10 @@ interface Props {
   type: "button" | "submit";
   handleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   setActive?: (arg: boolean) => void;
+  disabled?: boolean
 }
 
-const Button: FC<Props> = ({ title, type, handleClick, setActive }) => {
+const Button: FC<Props> = ({ title, type, handleClick, setActive, disabled }) => {
   const [step, setStep] = useState<number | null>(null);
 
   const { getQuery } = useQueryParams();
@@ -53,6 +54,7 @@ const Button: FC<Props> = ({ title, type, handleClick, setActive }) => {
       className={title === "Назад" ? styles.backButton : styles.button}
       onClick={config?.onClick}
       type={type}
+      disabled={disabled}
     >
       {title}
     </button>

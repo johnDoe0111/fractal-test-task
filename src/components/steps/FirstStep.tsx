@@ -6,6 +6,7 @@ import { Select } from "components/form/Select";
 import { firstStepInputs, options } from "consts";
 import { useQueryParams } from "hooks/useQueryParams";
 import StepsLayout from "layouts/steps-layout/StepsLayout";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { firstStepSchema } from "validation";
 
@@ -18,8 +19,7 @@ interface userFormData {
 
 const FirstStep = () => {
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
-
-  console.log(userData);
+  const [loading, setLoading] = useState(false);
 
   const { navigateWithParams } = useQueryParams();
 
@@ -35,6 +35,7 @@ const FirstStep = () => {
   });
 
   const onSubmit = (data: userFormData) => {
+    setLoading(true);
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
@@ -46,11 +47,16 @@ const FirstStep = () => {
         };
         resolve(userData);
       }, 2000);
-    }).then((res) => {
-      navigateWithParams("/onboarding", "step", "2");
-      localStorage.setItem("userData", JSON.stringify({ ...res, ...userData }));
-      reset();
-    });
+    })
+      .then((res) => {
+        navigateWithParams("/onboarding", "step", "2");
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({ ...res, ...userData })
+        );
+        reset();
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -83,7 +89,12 @@ const FirstStep = () => {
 
       <div className={styles.onboardingButtons}>
         <Button title="Назад" id="button-back" type="button" />
-        <Button title="Далее" id="button-next" type="submit" />
+        <Button
+          title={loading ? "Загрузка..." : "Далее"}
+          id="button-next"
+          type="submit"
+          disabled={loading}
+        />
       </div>
     </form>
   );

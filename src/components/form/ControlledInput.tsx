@@ -11,7 +11,7 @@ interface Props {
   type: string;
   label: string;
   data?: string;
-  style?: string;
+  variant?: string;
   bg?: string;
 }
 
@@ -22,7 +22,7 @@ export const ControlledInput: FC<Props> = ({
   mask,
   type,
   label,
-  style,
+  variant,
   bg,
 }) => {
   const {
@@ -36,7 +36,7 @@ export const ControlledInput: FC<Props> = ({
   if (mask) {
     return (
       <InputMask mask={mask} {...field}>
-        <div className={style}>
+        <div className={variant}>
           <label>{label}</label>
           <input
             placeholder={placeholder}
@@ -52,7 +52,7 @@ export const ControlledInput: FC<Props> = ({
   }
 
   return (
-    <div className={style}>
+    <div className={variant}>
       <label className={styles.label}>{label}</label>
       <input
         {...field}
