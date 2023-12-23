@@ -14,6 +14,12 @@ interface SignUpFormData {
   email: string;
 }
 
+interface UserData {
+  id: number;
+  tel: string;
+  email: string;
+}
+
 const SignUpPage = () => {
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
   const [loading, setLoading] = useState(false);
@@ -31,9 +37,9 @@ const SignUpPage = () => {
 
   const onSubmit = (data: SignUpFormData) => {
     setLoading(true);
-    return new Promise((resolve) => {
+    return new Promise<UserData>((resolve) => {
       setTimeout(() => {
-        const userData = {
+        const userData: UserData = {
           id: 1,
           tel: data.tel,
           email: data.email,
@@ -42,7 +48,7 @@ const SignUpPage = () => {
         resolve(userData);
       }, 2000);
     })
-      .then((res) => {
+      .then((res: UserData) => {
         navigateWithParams("/onboarding", "step", "1");
         localStorage.setItem(
           "userData",
