@@ -13,6 +13,11 @@ interface aboutFormData {
   advantages: any;
 }
 
+interface UserData {
+  id: number
+  advantages: any
+}
+
 const SecondStep = () => {
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
   const [loading, setLoading] = useState(false);
@@ -29,18 +34,18 @@ const SecondStep = () => {
 
   const onSubmit = (data: aboutFormData) => {
     setLoading(true);
-    return new Promise((resolve) => {
+    return new Promise<UserData>((resolve) => {
       setTimeout(() => {
-        const userData = {
+        const userData: UserData = {
           id: 3,
           advantages: data.advantages,
         };
         resolve(userData);
       }, 2000);
     })
-      .then((res) => {
+      .then((res: UserData) => {
         navigateWithParams("/onboarding", "step", "3");
-        localStorage.setItem("userData", JSON.stringify({ ...userData, res }));
+        localStorage.setItem("userData", JSON.stringify({ ...userData, ...res }));
         reset();
       })
       .finally(() => setLoading(false));

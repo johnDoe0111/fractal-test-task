@@ -17,6 +17,14 @@ interface userFormData {
   category: string;
 }
 
+interface UserData {
+  id: number
+  nickname: string
+  name: string
+  lastname: string
+  category: string
+}
+
 const FirstStep = () => {
   const userData = JSON.parse(localStorage.getItem("userData") || "{}");
   const [loading, setLoading] = useState(false);
@@ -36,9 +44,9 @@ const FirstStep = () => {
 
   const onSubmit = (data: userFormData) => {
     setLoading(true);
-    return new Promise((resolve) => {
+    return new Promise<UserData>((resolve) => {
       setTimeout(() => {
-        const userData = {
+        const userData:UserData = {
           id: 2,
           nickname: data.nickname,
           name: data.name,
@@ -48,11 +56,11 @@ const FirstStep = () => {
         resolve(userData);
       }, 2000);
     })
-      .then((res) => {
+      .then((res: UserData) => {
         navigateWithParams("/onboarding", "step", "2");
         localStorage.setItem(
           "userData",
-          JSON.stringify({ ...res, ...userData })
+          JSON.stringify({ ...userData, ...res })
         );
         reset();
       })
