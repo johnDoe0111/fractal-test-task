@@ -14,7 +14,7 @@ export interface SignUpFormData {
   email: string
 }
 
-const MainPage = () => {
+const SignUpPage = () => {
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState(() => {
     const user = localStorage.getItem("user")
@@ -117,4 +117,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default SignUpPage

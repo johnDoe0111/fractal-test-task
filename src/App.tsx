@@ -1,11 +1,11 @@
 import Onboarding from "pages/onboarding-page/OnboardingPage"
-import MainPage from "pages/sign-up-page/SignUpPage"
+import SignUpPage from "pages/sign-up-page/SignUpPage"
 import { Route, Routes } from "react-router-dom"
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<SignUpPage />} />
       <Route path="/onboarding" element={<Onboarding />} />
     </Routes>
   )
