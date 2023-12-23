@@ -18,6 +18,8 @@ const SignUpPage = () => {
 
   const { navigateWithParams } = useQueryParams();
 
+  console.log(userData);
+
   const { handleSubmit, control, reset } = useForm<SignUpFormData>({
     resolver: yupResolver(signUpSchema),
     mode: "all",
