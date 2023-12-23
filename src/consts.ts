@@ -1,6 +1,6 @@
-import CompletedDot from "./assets/icons/Check Small.png"
-import ActiveDot from "./assets/icons/Dot Small.png"
-import Folder from "./assets/icons/Folder.png"
+import CompletedDot from "./assets/icons/Check Small.png";
+import ActiveDot from "./assets/icons/Dot Small.png";
+import Folder from "./assets/icons/Folder.png";
 
 export const mainHeaderIcons = [
   {
@@ -21,9 +21,9 @@ export const mainHeaderIcons = [
     image: Folder,
     link: "https://groznyj.hh.ru/resume/a8365eaeff0bdaf7880039ed1f6e6f72574a44",
   },
-]
+];
 
-export const name = "Абдурахман Эдильбиев"
+export const name = "Абдурахман Эдильбиев";
 
 export const progressBarData = [
   {
@@ -46,13 +46,13 @@ export const progressBarData = [
     id: 5,
     name: "dot",
   },
-]
+];
 
 export const dotData = [
   { step: 1, activeImg: ActiveDot, completedImg: CompletedDot, id: 1 },
   { step: 2, activeImg: ActiveDot, completedImg: CompletedDot, id: 2 },
   { step: 3, activeImg: ActiveDot, completedImg: CompletedDot, id: 3 },
-]
+];
 
 export const firstStepInputs = [
   {
@@ -76,24 +76,24 @@ export const firstStepInputs = [
     type: "input",
     placeholder: "Placeholder",
   },
-]
+];
 
 export const options = [
   {
     id: 1,
-    value: "Не выбрано"
+    value: "Не выбрано",
   },
   {
     id: 2,
-    value: "Мужской"
+    value: "Мужской",
   },
   {
     id: 3,
-    value: "Женский"
-  }
-]
+    value: "Женский",
+  },
+];
 
-export const initialInputs = [{ id: 1, type: "input",  }];
+export const initialInputs = [{ id: 1, type: "input" }];
 
 export const group = [
   {
@@ -104,5 +104,5 @@ export const group = [
   },
   {
     id: 3,
-  }
-]
+  },
+];

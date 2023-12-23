@@ -19,15 +19,15 @@
     "paths": {
       "components/*": ["components/*"],
       "hooks/*": ["hooks/*"],
-      "services/*": ["services/*"],
       "assets/*": ["assets/*"],
       "pages/*": ["pages/*"],
       "layouts/*": ["layouts/*"],
-      "types/*": ["types/*"],
-      "validation/*": ["validation/*"],
-      "useQueryParams/*": ["useQueryParams/*"]
-    },
+      "validation/*": ["validation"],
+      "useQueryParams/*": ["useQueryParams/*"],
+      "consts/*": ["constants"],
+      "css/*": ["css/*"],
+    }
   },
-  "include": ["src", "_prettier.cjs", "src/constants.tsx"],
+  "include": ["src", "_prettier.cjs", "src/consts.ts", "src/validation.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

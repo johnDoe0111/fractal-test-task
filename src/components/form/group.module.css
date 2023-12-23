@@ -29,26 +29,26 @@
 }
 
 .group input[type="checkbox"] + p {
-  margin-left: 0px; 
+  margin-left: 0px;
 }
 
 .group input[type="checkbox"] + p::before {
-  content: '';
+  content: "";
   display: inline-block;
-  width: 16px; 
-  height: 16px; 
-  border: 1.5px solid #0000003D; 
-  background-color: #fff; 
-  margin-right: 8px; 
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #0000003d;
+  background-color: #fff;
+  margin-right: 8px;
   vertical-align: middle;
   border-radius: 4px;
 }
 
 .group input[type="checkbox"]:checked + p::before {
-  content: '\2713'; 
-  color: #007BFF; 
+  content: "\2713";
+  color: #007bff;
   text-align: center;
-  line-height: 16px; 
+  line-height: 16px;
 }
 
 .group input[type="radio"] {
@@ -58,22 +58,22 @@
 }
 
 .group input[type="radio"] + p {
-  margin-left: 0px; 
+  margin-left: 0px;
 }
 
 .group input[type="radio"] + p::before {
-  content: '';
+  content: "";
   display: inline-block;
-  width: 16px; 
-  height: 16px; 
-  border-radius: 50%; 
-  border: 1.5px solid #0000003D; 
-  background-color: #fff; 
-  margin-right: 8px; 
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #0000003d;
+  background-color: #fff;
+  margin-right: 8px;
   vertical-align: middle;
 }
 
 .group input[type="radio"]:checked + p::before {
-  content: '';
-  background-color: #007BFF;
+  content: "";
+  background-color: #007bff;
 }

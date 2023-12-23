@@ -1,12 +1,12 @@
-import styles from "./select.module.css"
-import { FC } from "react"
-import { Control, useController } from "react-hook-form"
+import styles from "./select.module.css";
+import { FC } from "react";
+import { Control, useController } from "react-hook-form";
 
 interface Props {
-  control: Control<any>
-  name: string
-  label: string
-  options: { id: number; value: string }[]
+  control: Control<any>;
+  name: string;
+  label: string;
+  options: { id: number; value: string }[];
 }
 
 export const Select: FC<Props> = ({ label, name, control, options }) => {
@@ -16,7 +16,7 @@ export const Select: FC<Props> = ({ label, name, control, options }) => {
   } = useController({
     name,
     control,
-  })
+  });
 
   return (
     <div className={styles.selectBlock}>
@@ -34,5 +34,5 @@ export const Select: FC<Props> = ({ label, name, control, options }) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

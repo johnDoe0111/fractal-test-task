@@ -1,65 +1,57 @@
-import { firstStepInputs, options } from "../../constants"
-import styles from "./steps.module.css"
-import { yupResolver } from "@hookform/resolvers/yup"
-import Button from "components/form/Button"
-import ControlledInput from "components/form/ControlledInput"
-import { Select } from "components/form/Select"
-import { useQueryParams } from "hooks/useQueryParams"
-import StepsLayout from "layouts/steps-layout/StepsLayout"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { firstStepSchema } from "validation"
+import styles from "./steps.module.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Button from "components/form/Button";
+import ControlledInput from "components/form/ControlledInput";
+import { Select } from "components/form/Select";
+import { firstStepInputs, options } from "consts";
+import { useQueryParams } from "hooks/useQueryParams";
+import StepsLayout from "layouts/steps-layout/StepsLayout";
+import { useForm } from "react-hook-form";
+import { firstStepSchema } from "validation";
 
-export interface userFormData {
-  nickname: string
-  name: string
-  lastname: string
-  category: string
+interface userFormData {
+  nickname: string;
+  name: string;
+  lastname: string;
+  category: string;
 }
 
 const FirstStep = () => {
-  const [loading, setLoading] = useState(false)
-  const [userData, setUserData] = useState(() => {
-    const user = localStorage.getItem("personalData")
-    if (user) {
-      return JSON.parse(user)
-    }
-  })
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
-  const { navigateWithParams } = useQueryParams()
+  console.log(userData);
+
+  const { navigateWithParams } = useQueryParams();
 
   const { handleSubmit, control, reset } = useForm<userFormData>({
     mode: "all",
     resolver: yupResolver(firstStepSchema),
     defaultValues: {
-      nickname: userData.nickname,
-      name: userData.name,
-      lastname: userData.lastname,
-      category: userData.category,
+      nickname: userData?.nickname,
+      name: userData?.name,
+      lastname: userData?.lastname,
+      category: userData?.category,
     },
-  })
+  });
 
   const onSubmit = (data: userFormData) => {
-    setLoading(true)
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
-          id: 1,
+          id: 2,
           nickname: data.nickname,
           name: data.name,
           lastname: data.lastname,
           category: data.category,
-        }
-        resolve(userData)
-      }, 2000)
+        };
+        resolve(userData);
+      }, 2000);
     }).then((res) => {
-      navigateWithParams("/onboarding", "step", "2")
-      localStorage.removeItem("personalData")
-      localStorage.setItem("personalData", JSON.stringify(res))
-      setLoading(false)
-      reset()
-    })
-  }
+      navigateWithParams("/onboarding", "step", "2");
+      localStorage.setItem("userData", JSON.stringify({ ...res, ...userData }));
+      reset();
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
@@ -94,7 +86,7 @@ const FirstStep = () => {
         <Button title="Далее" id="button-next" type="submit" />
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default FirstStep
+export default FirstStep;

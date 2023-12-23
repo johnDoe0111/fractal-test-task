@@ -1,12 +1,12 @@
-import CompleteIcon from "../../assets/icons/CompleteIcon.png"
-import ErrorIcon from "../../assets/icons/Error.png"
-import styles from "./formModal.module.css"
-import Button from "components/form/Button"
-import { FC } from "react"
+import CompleteIcon from "../../assets/icons/CompleteIcon.png";
+import ErrorIcon from "../../assets/icons/Error.png";
+import styles from "./formModal.module.css";
+import Button from "components/form/Button";
+import { FC } from "react";
 
 interface Props {
-  title: string
-  success: boolean
+  title: string;
+  success: boolean;
 }
 
 export const FormModal: FC<Props> = ({ title, success }) => {
@@ -24,5 +24,5 @@ export const FormModal: FC<Props> = ({ title, success }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

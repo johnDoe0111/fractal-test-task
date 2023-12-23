@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { initialInputs } from '../constants';
+import { initialInputs } from "../consts";
+import { createSlice } from "@reduxjs/toolkit";
 
 const inputsSlice = createSlice({
-  name: 'inputs',
+  name: "inputs",
   initialState: initialInputs,
   reducers: {
     addInput: (state, action) => {
@@ -10,8 +10,12 @@ const inputsSlice = createSlice({
       const newInput = { id: action.payload.id, type: action.payload.type };
       state.push(newInput);
     },
+    deleteInput: (state, action) => {
+      const inputIdToRemove = action.payload;
+      return state.filter((input) => input.id !== inputIdToRemove);
+    },
   },
 });
 
-export const { addInput } = inputsSlice.actions;
+export const { addInput, deleteInput } = inputsSlice.actions;
 export default inputsSlice.reducer;

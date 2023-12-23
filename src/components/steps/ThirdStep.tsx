@@ -1,27 +1,21 @@
-import styles from "./steps.module.css"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { FormModal } from "components/form-modal/FormModal"
-import Button from "components/form/Button"
-import { TextArea } from "components/form/TextArea"
-import { ModaLayout } from "layouts/modal-layout/ModalLayout"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { thirdStepSchema } from "validation"
+import styles from "./steps.module.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { FormModal } from "components/form-modal/FormModal";
+import Button from "components/form/Button";
+import { TextArea } from "components/form/TextArea";
+import { ModaLayout } from "layouts/modal-layout/ModalLayout";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { thirdStepSchema } from "validation";
 
 interface aboutFormData {
-  about: string
+  about: string;
 }
 
 const ThirdStep = () => {
-  const [modalActive, setModalActive] = useState(true);
-  const [success, setSuccess] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [userData, setUserData] = useState(() => {
-    const user = localStorage.getItem("aboutData")
-    if (user) {
-      return JSON.parse(user)
-    }
-  })
+  const [modalActive, setModalActive] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({
     mode: "all",
@@ -29,26 +23,27 @@ const ThirdStep = () => {
     defaultValues: {
       about: userData?.about,
     },
-  })
+  });
 
   const onSubmit = (data: aboutFormData) => {
-    setLoading(true)
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
-          id: 1,
+          id: 4,
           about: data.about,
-        }
-        resolve(userData)
-      }, 2000)
-    }).then((res) => {
-      localStorage.removeItem("aboutData")
-      localStorage.setItem("aboutData", JSON.stringify(res))
-      setLoading(false)
-      reset()
-      setSuccess(true)
+        };
+        resolve(userData);
+      }, 2000);
     })
-  }
+      .then((res) => {
+        localStorage.setItem("userData", JSON.stringify({ ...userData, res }));
+        reset();
+        setSuccess(true);
+      })
+      .catch((error) => {
+        setSuccess(false);
+      });
+  };
 
   return (
     <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
@@ -62,17 +57,26 @@ const ThirdStep = () => {
 
         <div className={styles.onboardingButtons}>
           <Button title="Назад" id="button-back" type="button" />
-          <Button title="Отправить" id="button-next" type="submit" setActive={setModalActive}/>
+          <Button
+            title="Отправить"
+            id="button-next"
+            type="submit"
+            setActive={setModalActive}
+          />
         </div>
       </section>
 
       {modalActive ? (
-        <ModaLayout setActive={setModalActive} active={modalActive}>
-          {success ? <FormModal title="Форма успешно отправлена" success={success}/> : <FormModal title="Ошибка" success={success}/>}
+        <ModaLayout setActive={setModalActive}>
+          {success ? (
+            <FormModal title="Форма успешно отправлена" success={success} />
+          ) : (
+            <FormModal title="Ошибка" success={success} />
+          )}
         </ModaLayout>
-      ): null}
+      ) : null}
     </form>
-  )
-}
+  );
+};
 
-export default ThirdStep
+export default ThirdStep;

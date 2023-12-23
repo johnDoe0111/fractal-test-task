@@ -1,23 +1,23 @@
-import styles from "./textArea.module.css"
-import React, { FC, useState } from "react"
-import { Control, useController } from "react-hook-form"
+import styles from "./textArea.module.css";
+import React, { FC, useState } from "react";
+import { Control, useController } from "react-hook-form";
 
 interface Props {
-  label: string
-  placeholder: string
-  control: Control<any>
-  name: string
+  label: string;
+  placeholder: string;
+  control: Control<any>;
+  name: string;
 }
 
 export const TextArea: FC<Props> = ({ label, placeholder, control, name }) => {
-  const [charCount, setCharCount] = useState(0)
-  const maxCharCount = 200
+  const [charCount, setCharCount] = useState(0);
+  const maxCharCount = 200;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = event.target.value
-    setCharCount(inputValue.length)
-    field.onChange(event)
-  }
+    const inputValue = event.target.value;
+    setCharCount(inputValue.length);
+    field.onChange(event);
+  };
 
   const {
     field,
@@ -25,7 +25,7 @@ export const TextArea: FC<Props> = ({ label, placeholder, control, name }) => {
   } = useController({
     name,
     control,
-  })
+  });
 
   return (
     <div className={styles.textAreaWrapper}>
@@ -43,5 +43,5 @@ export const TextArea: FC<Props> = ({ label, placeholder, control, name }) => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};

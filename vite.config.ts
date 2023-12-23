@@ -21,13 +21,13 @@ export default defineConfig({
     alias: {
       components: "/src/components",
       hooks: "/src/hooks/",
-      services: "/src/services",
       assets: "/src/assets",
       pages: "/src/pages",
       layouts: "/src/layouts",
-      types: "/src/types",
-      validation: "/src/validation",
-      useQueryParams: "/src/useQueryParams"
+      validation: "/src/validation.ts",
+      useQueryParams: "/src/hooks/",
+      consts: "/src/consts.ts",
+      css: "/src/css",
     },
   },
 })

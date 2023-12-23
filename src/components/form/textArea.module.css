@@ -10,14 +10,14 @@
   margin-top: 20px;
   color: #333333;
   font-family: "TT Travels";
-  border: 1px solid #0000007A;
+  border: 1px solid #0000007a;
   outline: none;
   border-radius: 4px;
   width: 100%;
 }
 
 .textArea::placeholder {
-  color: #0000007A;
+  color: #0000007a;
 }
 
 .textAreaWrapper {

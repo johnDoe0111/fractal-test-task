@@ -1,16 +1,15 @@
-import React, { FC } from 'react'
-import styles from './modalLayout.module.css'
+import styles from "./modalLayout.module.css";
+import React, { FC } from "react";
 
 interface Props {
-  children: React.ReactNode
-  setActive: (arg: boolean) => void
-  active: boolean
+  children: React.ReactNode;
+  setActive: (arg: boolean) => void;
 }
 
-export const ModaLayout:FC<Props> = ({ children, setActive, active }) => {
+export const ModaLayout: FC<Props> = ({ children, setActive }) => {
   return (
     <div className={styles.modalLayout} onClick={() => setActive(false)}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>{children}</div>
+      <div className={styles.modalContent}>{children}</div>
     </div>
-  )
-}
+  );
+};

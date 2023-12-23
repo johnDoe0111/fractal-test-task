@@ -1,63 +1,53 @@
-import { mainHeaderIcons, name } from "../../constants"
-import styles from "./signUp.module.css"
-import { yupResolver } from "@hookform/resolvers/yup"
-import Button from "components/form/Button"
-import ControlledInput from "components/form/ControlledInput"
-import { useQueryParams } from "hooks/useQueryParams"
-import MainLayout from "layouts/main-layout/MainLayout"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { signUpSchema } from "validation"
+import styles from "./signUp.module.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import Button from "components/form/Button";
+import ControlledInput from "components/form/ControlledInput";
+import { mainHeaderIcons, name } from "consts";
+import { useQueryParams } from "hooks/useQueryParams";
+import MainLayout from "layouts/main-layout/MainLayout";
+import { useForm } from "react-hook-form";
+import { signUpSchema } from "validation";
 
-export interface SignUpFormData {
-  tel: string
-  email: string
+interface SignUpFormData {
+  tel: string;
+  email: string;
 }
 
 const SignUpPage = () => {
-  const [loading, setLoading] = useState(false)
-  const [userData, setUserData] = useState(() => {
-    const user = localStorage.getItem("user")
-    if (user) {
-      return JSON.parse(user)
-    }
-  })
+  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
-  const { navigateWithParams } = useQueryParams()
+  const { navigateWithParams } = useQueryParams();
 
   const { handleSubmit, control, reset } = useForm<SignUpFormData>({
     resolver: yupResolver(signUpSchema),
     mode: "all",
     defaultValues: {
-      tel: userData.tel,
-      email: userData.email,
+      tel: userData?.tel,
+      email: userData?.email,
     },
-  })
+  });
 
   const onSubmit = (data: SignUpFormData) => {
-    setLoading(true)
     return new Promise((resolve) => {
       setTimeout(() => {
         const userData = {
           id: 1,
           tel: data.tel,
           email: data.email,
-        }
+        };
 
-        resolve(userData)
-      }, 2000)
+        resolve(userData);
+      }, 2000);
     }).then((res) => {
-      navigateWithParams("/onboarding", "step", "1")
-      localStorage.removeItem("user")
-      localStorage.setItem("user", JSON.stringify(res))
-      setLoading(false)
-      reset()
-    })
-  }
+      navigateWithParams("/onboarding", "step", "1");
+      localStorage.setItem("userData", JSON.stringify({ ...res, ...userData }));
+      reset();
+    });
+  };
 
-  const words = name.split(" ")
+  const words = name.split(" ");
 
-  const initials = words.map((word) => word[0]).join("")
+  const initials = words.map((word) => word[0]).join("");
 
   return (
     <MainLayout>
@@ -114,7 +104,7 @@ const SignUpPage = () => {
         </div>
       </form>
     </MainLayout>
-  )
-}
+  );
+};
 
-export default SignUpPage
+export default SignUpPage;

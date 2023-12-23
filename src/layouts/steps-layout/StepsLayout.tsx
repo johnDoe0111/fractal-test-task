@@ -1,14 +1,12 @@
-import { FC } from 'react'
-import styles from './stepsLayout.module.css'
+import styles from "./stepsLayout.module.css";
+import { FC } from "react";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const StepsLayout: FC<Props> = ({ children }) => {
-  return (
-    <main className={styles.layout}>{children}</main>
-  )
-}
+  return <main className={styles.layout}>{children}</main>;
+};
 
-export default StepsLayout
+export default StepsLayout;

@@ -1,14 +1,14 @@
-import { dotData } from "../../constants"
-import styles from "./progressBar.module.css"
-import classNames from "classnames"
-import React, { FC } from "react"
+import styles from "./progressBar.module.css";
+import classNames from "classnames";
+import { dotData } from "consts";
+import React, { FC } from "react";
 
 interface Props {
-  step: number | null
+  step: number | null;
 }
 
 export const ProgressBar: FC<Props> = ({ step }) => {
-  const cx = classNames.bind(styles)
+  const cx = classNames.bind(styles);
 
   return (
     <div className={styles.progressBar}>
@@ -30,12 +30,13 @@ export const ProgressBar: FC<Props> = ({ step }) => {
           {item.step < 3 && (
             <div
               className={cx(styles.line, {
-                [styles.purpleBg]: step === item.step + 1 || step === item.step + 2,
+                [styles.purpleBg]:
+                  step === item.step + 1 || step === item.step + 2,
               })}
             />
           )}
         </React.Fragment>
       ))}
     </div>
-  )
-}
+  );
+};

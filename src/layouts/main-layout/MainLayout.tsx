@@ -1,14 +1,12 @@
-import React, { FC } from "react"
-import styles from './main-layout.module.css'
+import styles from "./main-layout.module.css";
+import React, { FC } from "react";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const MainLayout: FC<Props> = ({ children }) => {
-  return (
-    <main className={styles.layout}>{children}</main>
-  )
-}
+  return <main className={styles.layout}>{children}</main>;
+};
 
-export default MainLayout
+export default MainLayout;

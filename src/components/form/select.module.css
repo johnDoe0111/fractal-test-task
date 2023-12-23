@@ -13,16 +13,16 @@
   border-radius: 4px;
   outline: none;
   font-family: "TT Travels";
-  color: #0000007A;
+  color: #0000007a;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url('../../assets/icons/Chevron.png'); 
+  background-image: url("../../assets/icons/Chevron.png");
   background-repeat: no-repeat;
   background-position: right;
 }
 
 select:focus {
-  border-color: #007bff; 
+  border-color: #007bff;
   color: #333333;
 }
