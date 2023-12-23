@@ -1,0 +1,22 @@
+.progressBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  background-color: #A6A6A6;
+  border-radius: 100px;
+}
+
+.line {
+  width: 50%;
+  height: 8px;
+  background-color: #A6A6A6;
+}
+
+.purpleBg {
+  background-color: #5558FA;
+}

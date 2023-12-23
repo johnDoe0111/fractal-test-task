@@ -1,13 +1,13 @@
+import { mainHeaderIcons, name } from "../../constants"
 import styles from "./signUp.module.css"
 import { yupResolver } from "@hookform/resolvers/yup"
-import ControlledInput from "components/form/ControlledInput"
 import Button from "components/form/Button"
-import { mainHeaderIcons, name } from "../../constants"
-import MainLayout from "layouts/MainLayout"
+import ControlledInput from "components/form/ControlledInput"
+import { useQueryParams } from "hooks/useQueryParams"
+import MainLayout from "layouts/main-layout/MainLayout"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { schema } from "validation"
-import { useQueryParams } from "hooks/useQueryParams"
+import { signUpSchema } from "validation"
 
 export interface SignUpFormData {
   tel: string
@@ -17,7 +17,7 @@ export interface SignUpFormData {
 const MainPage = () => {
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState(() => {
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem("user")
     if (user) {
       return JSON.parse(user)
     }
@@ -26,8 +26,12 @@ const MainPage = () => {
   const { navigateWithParams } = useQueryParams()
 
   const { handleSubmit, control, reset } = useForm<SignUpFormData>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(signUpSchema),
     mode: "all",
+    defaultValues: {
+      tel: userData.tel,
+      email: userData.email,
+    },
   })
 
   const onSubmit = (data: SignUpFormData) => {
@@ -43,7 +47,7 @@ const MainPage = () => {
         resolve(userData)
       }, 2000)
     }).then((res) => {
-      navigateWithParams('/onboarding', 'step', '1')
+      navigateWithParams("/onboarding", "step", "1")
       localStorage.removeItem("user")
       localStorage.setItem("user", JSON.stringify(res))
       setLoading(false)
@@ -89,7 +93,7 @@ const MainPage = () => {
                 placeholder="+7 999 999-99-99"
                 type="tel"
                 label="Номер телефона"
-                data={userData.tel}
+                style="long-input"
               />
             </div>
             <div>
@@ -99,12 +103,12 @@ const MainPage = () => {
                 type="email"
                 placeholder="webstudio.fractal@example.com"
                 label="Email"
-                data={userData.email}
+                style="long-input"
               />
             </div>
 
             <div className={styles.buttonStart}>
-              <Button title="Начать" id="button-start" type="submit"/>
+              <Button title="Начать" id="button-start" type="submit" />
             </div>
           </div>
         </div>

@@ -1,13 +1,12 @@
-.signInput {
-  max-width: 400px;
-}
-
-.signInput label {
+.label {
+  display: block;
+  margin-top: 24px;
   color: #333333;
   font-family: "TT Travels Medium";
+  font-size: 14px;
 }
 
-.signInput input {
+.input {
   width: 100%;
   padding: 12px;
   border: 1px solid #00000029;
@@ -17,14 +16,10 @@
   margin-top: 8px;
 }
 
-.label {
-  display: block;
-  margin-top: 24px;
+whiteBg {
+  background-color: white;
 }
 
-.errorMessage {
-  color: red;
-  font-size: 12px;
-  margin-top: 3px;
-  margin-left: 12px;
+.input:focus {
+  outline: none;
 }

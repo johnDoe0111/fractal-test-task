@@ -24,7 +24,6 @@
       "pages/*": ["pages/*"],
       "layouts/*": ["layouts/*"],
       "types/*": ["types/*"],
-      "constants/*": ["constants/*"],
       "validation/*": ["validation/*"],
       "useQueryParams/*": ["useQueryParams/*"]
     },

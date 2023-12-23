@@ -1,0 +1,15 @@
+.inputs {
+  display: flex;
+  align-items: center;
+}
+
+.trash {
+  width: 20px;
+  height: 19px;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.leftItem {
+  flex: 1;
+}

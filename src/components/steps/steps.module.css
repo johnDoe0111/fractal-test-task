@@ -1,0 +1,20 @@
+.firstStep {
+  max-width: 300px;
+}
+
+.secondStep {
+  max-width: 336px;
+}
+
+.select {
+  width: 100%;
+}
+
+.onboardingButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thirdStep {
+  padding-top: 66px;
+}

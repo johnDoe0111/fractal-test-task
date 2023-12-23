@@ -1,7 +1,7 @@
 import * as yup from "yup"
 
-export const schema = yup.object({
-  tel: yup.string().required(),
+export const signUpSchema = yup.object({
+  tel: yup.string().required("Телефон обязателен для заполнения"),
   email: yup
     .string()
     .matches(
@@ -9,4 +9,19 @@ export const schema = yup.object({
       "Введите корректный email",
     )
     .required("Email обязателен для заполнения"),
+});
+
+export const firstStepSchema = yup.object({
+  nickname: yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы").required("Поле `Никнейм` обязателен для заполнения"),
+  name: yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы").required("Поле `Имя` обязательно для заполнения"),
+  lastname: yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы").required("Поле `Фамилия` обязательно для заполнения"),
+  category: yup.string().required(),
+})
+
+export const secondStepSchema = yup.object({
+  advantages: yup.array().of(yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы")).required("Поле обязательно для заполнения"),
+})
+
+export const thirdStepSchema = yup.object({
+  about: yup.string().max(200).required("Поле обязательно для заполнения")
 })

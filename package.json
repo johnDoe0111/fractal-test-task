@@ -17,6 +17,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "classnames": "^2.3.2",
     "rc-menu": "^9.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,6 +26,7 @@
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.21.0",
     "react-step-progress-bar": "^1.0.3",
+    "uuid": "^9.0.1",
     "yup": "^1.3.3"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-input-mask": "^3.0.5",
     "@types/testing-library__jest-dom": "^5.14.5",
+    "@types/uuid": "^9.0.7",
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.0.0",
     "eslint-config-react-app": "^7.0.1",

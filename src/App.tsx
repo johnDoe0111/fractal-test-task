@@ -1,4 +1,4 @@
-import Onboarding from "pages/onboarding-page/Onboarding"
+import Onboarding from "pages/onboarding-page/OnboardingPage"
 import MainPage from "pages/sign-up-page/SignUpPage"
 import { Route, Routes } from "react-router-dom"
 

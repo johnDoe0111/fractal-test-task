@@ -26,7 +26,6 @@ export default defineConfig({
       pages: "/src/pages",
       layouts: "/src/layouts",
       types: "/src/types",
-      constants: "/src/constants",
       validation: "/src/validation",
       useQueryParams: "/src/useQueryParams"
     },

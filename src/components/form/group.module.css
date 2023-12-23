@@ -1,0 +1,79 @@
+.group {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.groupWrapper {
+  padding-top: 24px;
+}
+
+.groupTitle {
+  color: #333333;
+  font-size: 14px;
+  font-family: "TT Travels Medium";
+}
+
+.group p {
+  margin-left: 8px;
+}
+
+.group:not(:first-child) {
+  margin-top: 2px;
+}
+
+.group input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.group input[type="checkbox"] + p {
+  margin-left: 0px; 
+}
+
+.group input[type="checkbox"] + p::before {
+  content: '';
+  display: inline-block;
+  width: 16px; 
+  height: 16px; 
+  border: 1.5px solid #0000003D; 
+  background-color: #fff; 
+  margin-right: 8px; 
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.group input[type="checkbox"]:checked + p::before {
+  content: '\2713'; 
+  color: #007BFF; 
+  text-align: center;
+  line-height: 16px; 
+}
+
+.group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.group input[type="radio"] + p {
+  margin-left: 0px; 
+}
+
+.group input[type="radio"] + p::before {
+  content: '';
+  display: inline-block;
+  width: 16px; 
+  height: 16px; 
+  border-radius: 50%; 
+  border: 1.5px solid #0000003D; 
+  background-color: #fff; 
+  margin-right: 8px; 
+  vertical-align: middle;
+}
+
+.group input[type="radio"]:checked + p::before {
+  content: '';
+  background-color: #007BFF;
+}

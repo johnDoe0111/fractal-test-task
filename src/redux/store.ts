@@ -1,7 +1,13 @@
-import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit"
+import { Action, ThunkAction, configureStore, combineReducers } from "@reduxjs/toolkit"
+import inputReducer from './inputSlice'
+
+
+const rootReducer = combineReducers({
+  inputs: inputReducer
+})
 
 export const store = configureStore({
-  reducer: {},
+  reducer: rootReducer,
 })
 
 export type AppDispatch = typeof store.dispatch

@@ -1,0 +1,29 @@
+.gray-color {
+  color: #A6A6A6;
+}
+
+.long-input {
+  max-width: 400;
+}
+
+.input-bg {
+  background-color: white;
+  max-width: 300px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #00000029;
+  border-radius: 4px;
+  font-family: "TT Travels";
+  margin-top: 8px;
+  outline: none;
+}
+
+.short-input {
+  max-width: 300px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+}
