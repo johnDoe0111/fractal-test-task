@@ -18,7 +18,7 @@ const SecondStep = () => {
   const { user, isLoading, error } = useAppSelector(
     (state) => state.user
   );
-  console.log(user)
+
   const { navigateWithParams } = useQueryParams();
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({

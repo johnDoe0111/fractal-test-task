@@ -22,7 +22,6 @@ interface userFormData {
 const FirstStep = () => {
   const dispatch = useAppDispatch();
   const { user, isLoading, error } = useAppSelector((state) => state.user);
-  console.log(user);
 
   const { navigateWithParams } = useQueryParams();
 

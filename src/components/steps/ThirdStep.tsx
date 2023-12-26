@@ -20,7 +20,6 @@ const ThirdStep = () => {
   const { user, isLoading, error } = useAppSelector((state) => state.user);
   const [modalActive, setModalActive] = useState(false);
   const [success, setSuccess] = useState(false);
-  console.log(user)
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({
     mode: "all",
