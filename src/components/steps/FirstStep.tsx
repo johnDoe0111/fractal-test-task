@@ -1,12 +1,13 @@
+import { getUserInfo } from "../../redux/user/userAction";
 import styles from "./steps.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "components/form/Button";
 import ControlledInput from "components/form/ControlledInput";
 import { Select } from "components/form/Select";
 import { firstStepInputs, options } from "consts";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { useQueryParams } from "hooks/useQueryParams";
 import StepsLayout from "layouts/steps-layout/StepsLayout";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { firstStepSchema } from "validation";
 
@@ -17,17 +18,9 @@ interface userFormData {
   category: string;
 }
 
-interface UserData {
-  id: number
-  nickname: string
-  name: string
-  lastname: string
-  category: string
-}
-
 const FirstStep = () => {
-  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
-  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
+  const { userInfo, isLoading, error } = useAppSelector((state) => state.user);
 
   const { navigateWithParams } = useQueryParams();
 
@@ -35,37 +28,27 @@ const FirstStep = () => {
     mode: "all",
     resolver: yupResolver(firstStepSchema),
     defaultValues: {
-      nickname: userData?.nickname,
-      name: userData?.name,
-      lastname: userData?.lastname,
-      category: userData?.category,
+      nickname: userInfo?.nickname || "",
+      name: userInfo?.name || "",
+      lastname: userInfo?.lastname || "",
+      category: userInfo?.category || "",
     },
   });
 
   const onSubmit = (data: userFormData) => {
-    setLoading(true);
-    return new Promise<UserData>((resolve) => {
-      setTimeout(() => {
-        const userData:UserData = {
-          id: 2,
-          nickname: data.nickname,
-          name: data.name,
-          lastname: data.lastname,
-          category: data.category,
-        };
-        resolve(userData);
-      }, 2000);
-    })
-      .then((res: UserData) => {
-        navigateWithParams("/onboarding", "step", "2");
-        localStorage.setItem(
-          "userData",
-          JSON.stringify({ ...userData, ...res })
-        );
-        reset();
-      })
-      .finally(() => setLoading(false));
+    dispatch(getUserInfo(data));
+
+    if (!isLoading) {
+      navigateWithParams("/onboarding", "step", "2");
+      reset();
+    } else {
+      <p>bmb</p>;
+    }
   };
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
@@ -98,10 +81,10 @@ const FirstStep = () => {
       <div className={styles.onboardingButtons}>
         <Button title="Назад" id="button-back" type="button" />
         <Button
-          title={loading ? "Загрузка..." : "Далее"}
+          title={isLoading ? "Загрузка..." : "Далее"}
           id="button-next"
           type="submit"
-          disabled={loading}
+          disabled={isLoading}
         />
       </div>
     </form>

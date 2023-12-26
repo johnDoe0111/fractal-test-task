@@ -1,58 +1,42 @@
+import styles from "./steps.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormModal } from "components/form-modal/FormModal";
 import Button from "components/form/Button";
 import { TextArea } from "components/form/TextArea";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { ModaLayout } from "layouts/modal-layout/ModalLayout";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { getUserAbout } from "../../redux/user/userAction";
 import { thirdStepSchema } from "validation";
-import styles from "./steps.module.css";
 
 interface aboutFormData {
   about: string;
 }
 
-interface UserData {
-  id: number
-  about: string
-}
-
 const ThirdStep = () => {
+  const dispatch = useAppDispatch();
+  const { userAbout, isLoading, error } = useAppSelector((state) => state.user);
   const [modalActive, setModalActive] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({
     mode: "all",
     resolver: yupResolver(thirdStepSchema),
     defaultValues: {
-      about: userData?.about,
+      about: userAbout?.about || "",
     },
   });
 
   const onSubmit = (data: aboutFormData) => {
-    setModalActive(false);
-    setLoading(true);
-    return new Promise<UserData>((resolve) => {
-      setTimeout(() => {
-        const userData: UserData = {
-          id: 4,
-          about: data.about,
-        };
-        resolve(userData);
-      }, 2000);
-    })
-      .then((res: UserData) => {
-        localStorage.setItem("userData", JSON.stringify({ ...userData, ...res }));
-        reset();
-        setSuccess(true);
-        setModalActive(true);
-      })
-      .catch((error) => {
-        setSuccess(false);
-      })
-      .finally(() => setLoading(false));
+    if (error) {
+      setSuccess(false);
+      setModalActive(true);
+    } else {
+      dispatch(getUserAbout(data))
+      reset();
+      setSuccess(true);
+    }
   };
 
   return (
@@ -68,18 +52,18 @@ const ThirdStep = () => {
         <div className={styles.onboardingButtons}>
           <Button title="Назад" id="button-back" type="button" />
           <Button
-            title={loading ? "Загрузка..." : "Отправить"}
+            title={isLoading ? "Загрузка..." : "Отправить"}
             id="button-next"
             type="submit"
             setActive={setModalActive}
-            disabled={loading}
+            disabled={isLoading}
           />
         </div>
       </section>
 
       {modalActive ? (
         <ModaLayout setActive={setModalActive}>
-          {loading ? null : !loading && success ? (
+          {isLoading ? null : !isLoading && success ? (
             <FormModal title="Форма успешно отправлена" success={success} />
           ) : (
             <FormModal title="Ошибка" success={success} />

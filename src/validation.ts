@@ -31,9 +31,7 @@ export const firstStepSchema = yup.object({
 });
 
 export const secondStepSchema = yup.object({
-  advantages: yup
-    .array()
-    .of(yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы"))
+  advantages: yup.string().matches(/^[a-zA-Zа-яА-Я]+$/, "Можно вводить только буквы")
     .required("Поле обязательно для заполнения"),
 });
 

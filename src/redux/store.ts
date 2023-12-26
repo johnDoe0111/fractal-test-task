@@ -1,4 +1,5 @@
-import inputReducer from "./inputSlice";
+import inputReducer from "./input/inputSlice";
+import userSlice from "./user/userSlice";
 import {
   Action,
   ThunkAction,
@@ -8,6 +9,7 @@ import {
 
 const rootReducer = combineReducers({
   inputs: inputReducer,
+  user: userSlice,
 });
 
 export const store = configureStore({

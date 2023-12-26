@@ -1,11 +1,12 @@
+import { getUserBase } from "../../redux/user/userAction";
 import styles from "./signUp.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "components/form/Button";
 import ControlledInput from "components/form/ControlledInput";
 import { mainHeaderIcons, name } from "consts";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { useQueryParams } from "hooks/useQueryParams";
 import MainLayout from "layouts/main-layout/MainLayout";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { signUpSchema } from "validation";
 
@@ -14,54 +15,36 @@ interface SignUpFormData {
   email: string;
 }
 
-interface UserData {
-  id: number;
-  tel: string;
-  email: string;
-}
-
 const SignUpPage = () => {
-  const userData = JSON.parse(localStorage.getItem("userData") || "{}");
-  const [loading, setLoading] = useState(false);
-
+  const dispatch = useAppDispatch();
+  const { userBase, isLoading, error } = useAppSelector((state) => state.user);
   const { navigateWithParams } = useQueryParams();
 
   const { handleSubmit, control, reset } = useForm<SignUpFormData>({
     resolver: yupResolver(signUpSchema),
     mode: "all",
     defaultValues: {
-      tel: userData?.tel,
-      email: userData?.email,
+      tel: userBase?.tel || "",
+      email: userBase?.email || "",
     },
   });
 
   const onSubmit = (data: SignUpFormData) => {
-    setLoading(true);
-    return new Promise<UserData>((resolve) => {
-      setTimeout(() => {
-        const userData: UserData = {
-          id: 1,
-          tel: data.tel,
-          email: data.email,
-        };
+    dispatch(getUserBase(data));
 
-        resolve(userData);
-      }, 2000);
-    })
-      .then((res: UserData) => {
-        navigateWithParams("/onboarding", "step", "1");
-        localStorage.setItem(
-          "userData",
-          JSON.stringify({ ...res, ...userData })
-        );
-        reset();
-      })
-      .finally(() => setLoading(false));
+    if (!isLoading) {
+      navigateWithParams("/onboarding", "step", "1");
+      reset();
+    }
   };
 
   const words = name.split(" ");
 
   const initials = words.map((word) => word[0]).join("");
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <MainLayout>
@@ -113,10 +96,10 @@ const SignUpPage = () => {
 
             <div className={styles.buttonStart}>
               <Button
-                title={loading ? "Загрузка..." : "Начать"}
+                title={isLoading ? "Загрузка..." : "Начать"}
                 id="button-start"
                 type="submit"
-                disabled={loading}
+                disabled={isLoading}
               />
             </div>
           </div>

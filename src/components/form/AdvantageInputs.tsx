@@ -1,5 +1,5 @@
 import Trash from "../../assets/icons/Trash.png";
-import { addInput, deleteInput } from "../../redux/inputSlice";
+import { addInput, deleteInput } from "../../redux/input/inputSlice";
 import Button from "./Button";
 import ControlledInput from "./ControlledInput";
 import styles from "./advantageInput.module.css";
@@ -11,7 +11,7 @@ interface Props {
   control: Control<any>;
 }
 
-export const AdvantageInput: FC<Props> = ({ control }) => {
+export const AdvantageInputs: FC<Props> = ({ control }) => {
   const inputs = useAppSelector((state: any) => state.inputs);
   const dispatch = useAppDispatch();
 

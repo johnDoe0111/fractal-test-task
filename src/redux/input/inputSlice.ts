@@ -1,4 +1,4 @@
-import { initialInputs } from "../consts";
+import { initialInputs } from "../../consts";
 import { createSlice } from "@reduxjs/toolkit";
 
 const inputsSlice = createSlice({
