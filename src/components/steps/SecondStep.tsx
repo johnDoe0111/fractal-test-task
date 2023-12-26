@@ -1,4 +1,4 @@
-import { getUserAdvantages } from "../../redux/user/userAction";
+import { createUser } from "../../redux/user/userAction";
 import styles from "./steps.module.css";
 import { AdvantageInputs } from "components/form/AdvantageInputs";
 import Button from "components/form/Button";
@@ -6,6 +6,7 @@ import { Group } from "components/form/Group";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { useQueryParams } from "hooks/useQueryParams";
 import StepsLayout from "layouts/steps-layout/StepsLayout";
+import { UserFull } from "models/IUser";
 import { useForm } from "react-hook-form";
 
 interface aboutFormData {
@@ -14,22 +15,22 @@ interface aboutFormData {
 
 const SecondStep = () => {
   const dispatch = useAppDispatch();
-  const { userAdvantages, isLoading, error } = useAppSelector(
+  const { user, isLoading, error } = useAppSelector(
     (state) => state.user
   );
-
+  console.log(user)
   const { navigateWithParams } = useQueryParams();
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({
     mode: "all",
 
     defaultValues: {
-      advantages: userAdvantages?.advantages || "",
+      advantages: user?.advantages || "",
     },
   });
 
   const onSubmit = (data: aboutFormData) => {
-    dispatch(getUserAdvantages(data));
+    dispatch(createUser(data as UserFull));
     if (!isLoading) {
       navigateWithParams("/onboarding", "step", "3");
       reset();

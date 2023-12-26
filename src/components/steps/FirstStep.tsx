@@ -1,4 +1,4 @@
-import { getUserInfo } from "../../redux/user/userAction";
+import { createUser } from "../../redux/user/userAction";
 import styles from "./steps.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "components/form/Button";
@@ -8,6 +8,7 @@ import { firstStepInputs, options } from "consts";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { useQueryParams } from "hooks/useQueryParams";
 import StepsLayout from "layouts/steps-layout/StepsLayout";
+import { UserFull } from "models/IUser";
 import { useForm } from "react-hook-form";
 import { firstStepSchema } from "validation";
 
@@ -20,7 +21,8 @@ interface userFormData {
 
 const FirstStep = () => {
   const dispatch = useAppDispatch();
-  const { userInfo, isLoading, error } = useAppSelector((state) => state.user);
+  const { user, isLoading, error } = useAppSelector((state) => state.user);
+  console.log(user);
 
   const { navigateWithParams } = useQueryParams();
 
@@ -28,21 +30,18 @@ const FirstStep = () => {
     mode: "all",
     resolver: yupResolver(firstStepSchema),
     defaultValues: {
-      nickname: userInfo?.nickname || "",
-      name: userInfo?.name || "",
-      lastname: userInfo?.lastname || "",
-      category: userInfo?.category || "",
+      nickname: user?.nickname || "",
+      name: user?.name || "",
+      lastname: user?.lastname || "",
+      category: user?.category || "",
     },
   });
 
   const onSubmit = (data: userFormData) => {
-    dispatch(getUserInfo(data));
-
+    dispatch(createUser(data as UserFull));
     if (!isLoading) {
       navigateWithParams("/onboarding", "step", "2");
       reset();
-    } else {
-      <p>bmb</p>;
     }
   };
 

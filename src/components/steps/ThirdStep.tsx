@@ -7,8 +7,9 @@ import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { ModaLayout } from "layouts/modal-layout/ModalLayout";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { getUserAbout } from "../../redux/user/userAction";
+import { createUser } from "../../redux/user/userAction";
 import { thirdStepSchema } from "validation";
+import { UserFull } from "models/IUser";
 
 interface aboutFormData {
   about: string;
@@ -16,15 +17,16 @@ interface aboutFormData {
 
 const ThirdStep = () => {
   const dispatch = useAppDispatch();
-  const { userAbout, isLoading, error } = useAppSelector((state) => state.user);
+  const { user, isLoading, error } = useAppSelector((state) => state.user);
   const [modalActive, setModalActive] = useState(false);
   const [success, setSuccess] = useState(false);
+  console.log(user)
 
   const { handleSubmit, control, reset } = useForm<aboutFormData>({
     mode: "all",
     resolver: yupResolver(thirdStepSchema),
     defaultValues: {
-      about: userAbout?.about || "",
+      about: user?.about || "",
     },
   });
 
@@ -33,7 +35,7 @@ const ThirdStep = () => {
       setSuccess(false);
       setModalActive(true);
     } else {
-      dispatch(getUserAbout(data))
+      dispatch(createUser(data as UserFull))
       reset();
       setSuccess(true);
     }

@@ -8,13 +8,8 @@ export interface IUserInfo {
   name: string;
   lastname: string;
   category: string;
-  advantage?: string;
-}
-
-export interface IUserAdvantages {
   advantages: string;
-}
-
-export interface IUserAbout {
   about: string;
 }
+
+export type UserFull = IUserBase & IUserInfo;
