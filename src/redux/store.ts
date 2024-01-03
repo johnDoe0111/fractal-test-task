@@ -1,11 +1,11 @@
-import inputReducer from "./input/inputSlice";
-import userSlice from "./user/userSlice";
+import inputReducer from './input/inputSlice';
+import userSlice from './user/userSlice';
 import {
   Action,
   ThunkAction,
   combineReducers,
   configureStore,
-} from "@reduxjs/toolkit";
+} from '@reduxjs/toolkit';
 
 const rootReducer = combineReducers({
   inputs: inputReducer,

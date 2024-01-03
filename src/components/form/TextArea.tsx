@@ -1,15 +1,14 @@
-import styles from "./textArea.module.css";
-import React, { FC, useState } from "react";
-import { Control, useController } from "react-hook-form";
+import styles from './textArea.module.css';
+import { textAreaProps } from 'consts';
+import React, { FC, useState } from 'react';
+import { Control, useController } from 'react-hook-form';
 
 interface Props {
-  label: string;
-  placeholder: string;
   control: Control<any>;
   name: string;
 }
 
-export const TextArea: FC<Props> = ({ label, placeholder, control, name }) => {
+export const TextArea: FC<Props> = ({ control, name }) => {
   const [charCount, setCharCount] = useState(0);
   const maxCharCount = 200;
 
@@ -29,15 +28,19 @@ export const TextArea: FC<Props> = ({ label, placeholder, control, name }) => {
 
   return (
     <div className={styles.textAreaWrapper}>
-      <label className={styles.label}>{label}</label>
-      <textarea
-        className={styles.textArea}
-        placeholder={placeholder}
-        {...field}
-        onChange={handleInputChange}
-      />
+      {textAreaProps.map(item => (
+        <div key={item.id}>
+          <label className={styles.label}>{item.label}</label>
+          <textarea
+            className={styles.textArea}
+            placeholder={item.placeholder}
+            {...field}
+            onChange={handleInputChange}
+          />
+        </div>
+      ))}
       <div>
-        <p className="error-message">{error?.message}</p>
+        <p className='error-message'>{error?.message}</p>
         <p>
           {charCount}/{maxCharCount}
         </p>

@@ -22,7 +22,7 @@
 }
 
 .name {
-  font-family: "TT Travels Bold";
+  font-family: 'TT Travels Bold';
   font-size: 20px;
   line-height: 26px;
 }
@@ -53,11 +53,11 @@
 .form {
   padding-top: 24px;
   max-width: 400px;
-  font-family: "TT Travels";
+  font-family: 'TT Travels';
 }
 
 .for .form p {
-  font-family: "TT Travels Medium";
+  font-family: 'TT Travels Medium';
   font-size: 14px;
   line-height: 20px;
 }

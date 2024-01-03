@@ -1,7 +1,7 @@
 .label {
   display: block;
   color: #333333;
-  font-family: "TT Travels Medium";
+  font-family: 'TT Travels Medium';
   font-size: 14px;
 }
 
@@ -9,7 +9,7 @@
   padding: 12px 0 52px 12px;
   margin-top: 20px;
   color: #333333;
-  font-family: "TT Travels";
+  font-family: 'TT Travels';
   border: 1px solid #0000007a;
   outline: none;
   border-radius: 4px;

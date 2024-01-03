@@ -11,7 +11,7 @@
 .groupTitle {
   color: #333333;
   font-size: 14px;
-  font-family: "TT Travels Medium";
+  font-family: 'TT Travels Medium';
 }
 
 .group p {
@@ -22,18 +22,18 @@
   margin-top: 2px;
 }
 
-.group input[type="checkbox"] {
+.group input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.group input[type="checkbox"] + p {
+.group input[type='checkbox'] + p {
   margin-left: 0px;
 }
 
-.group input[type="checkbox"] + p::before {
-  content: "";
+.group input[type='checkbox'] + p::before {
+  content: '';
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -44,25 +44,25 @@
   border-radius: 4px;
 }
 
-.group input[type="checkbox"]:checked + p::before {
-  content: "\2713";
+.group input[type='checkbox']:checked + p::before {
+  content: '\2713';
   color: #007bff;
   text-align: center;
   line-height: 16px;
 }
 
-.group input[type="radio"] {
+.group input[type='radio'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.group input[type="radio"] + p {
+.group input[type='radio'] + p {
   margin-left: 0px;
 }
 
-.group input[type="radio"] + p::before {
-  content: "";
+.group input[type='radio'] + p::before {
+  content: '';
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -73,7 +73,7 @@
   vertical-align: middle;
 }
 
-.group input[type="radio"]:checked + p::before {
-  content: "";
+.group input[type='radio']:checked + p::before {
+  content: '';
   background-color: #007bff;
 }

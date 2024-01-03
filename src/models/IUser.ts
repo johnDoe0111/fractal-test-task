@@ -12,4 +12,15 @@ export interface IUserInfo {
   about: string;
 }
 
+export interface RejectedWithValueAction<ThunkArg, RejectedValue> {
+  type: string;
+  payload: RejectedValue;
+  error: { message: 'Rejected' };
+  meta: {
+    requestId: string;
+    arg: ThunkArg;
+    aborted: boolean;
+  };
+}
+
 export type UserFull = IUserBase & IUserInfo;

@@ -1,7 +1,7 @@
 .selectBlock {
   padding-top: 24px;
   color: #333333;
-  font-family: "TT Travels Medium";
+  font-family: 'TT Travels Medium';
   font-size: 14px;
 }
 
@@ -12,12 +12,12 @@
   border: 1px solid #00000029;
   border-radius: 4px;
   outline: none;
-  font-family: "TT Travels";
+  font-family: 'TT Travels';
   color: #0000007a;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("../../assets/icons/Chevron.png");
+  background-image: url('../../assets/icons/Chevron.png');
   background-repeat: no-repeat;
   background-position: right;
 }

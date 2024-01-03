@@ -1,7 +1,7 @@
-import styles from "./controlledInput.module.css";
-import { FC } from "react";
-import { Control, useController } from "react-hook-form";
-import InputMask from "react-input-mask";
+import styles from './controlledInput.module.css';
+import { FC } from 'react';
+import { Control, useController } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 
 interface Props {
   control: Control<any>;
@@ -44,7 +44,7 @@ export const ControlledInput: FC<Props> = ({
             className={styles.input}
           />
           <div>
-            <p className="error-message">{error?.message}</p>
+            <p className='error-message'>{error?.message}</p>
           </div>
         </div>
       </InputMask>
@@ -61,7 +61,7 @@ export const ControlledInput: FC<Props> = ({
         className={bg ? `${bg}` : `${styles.input}`}
       />
       <div>
-        <p className="error-message">{error?.message}</p>
+        <p className='error-message'>{error?.message}</p>
       </div>
     </div>
   );

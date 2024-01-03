@@ -1,5 +1,5 @@
-import styles from "./stepsLayout.module.css";
-import { FC } from "react";
+import styles from './stepsLayout.module.css';
+import { FC } from 'react';
 
 interface Props {
   children: React.ReactNode;

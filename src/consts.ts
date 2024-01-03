@@ -1,50 +1,50 @@
-import CompletedDot from "./assets/icons/Check Small.png";
-import ActiveDot from "./assets/icons/Dot Small.png";
-import Folder from "./assets/icons/Folder.png";
+import CompletedDot from './assets/icons/Check Small.png';
+import ActiveDot from './assets/icons/Dot Small.png';
+import Folder from './assets/icons/Folder.png';
 
 export const mainHeaderIcons = [
   {
     id: 1,
-    title: "Telegram",
+    title: 'Telegram',
     image: Folder,
-    link: "https://t.me/qahegshvu",
+    link: 'https://t.me/qahegshvu',
   },
   {
     id: 2,
-    title: "GitHub",
+    title: 'GitHub',
     image: Folder,
-    link: "https://github.com/johnDoe0111",
+    link: 'https://github.com/johnDoe0111',
   },
   {
     id: 3,
-    title: "Резюме",
+    title: 'Резюме',
     image: Folder,
-    link: "https://groznyj.hh.ru/resume/a8365eaeff0bdaf7880039ed1f6e6f72574a44",
+    link: 'https://groznyj.hh.ru/resume/a8365eaeff0bdaf7880039ed1f6e6f72574a44',
   },
 ];
 
-export const name = "Абдурахман Эдильбиев";
+export const name = 'Абдурахман Эдильбиев';
 
 export const progressBarData = [
   {
     id: 1,
-    name: "dot",
+    name: 'dot',
   },
   {
     id: 2,
-    name: "line",
+    name: 'line',
   },
   {
     id: 3,
-    name: "dot",
+    name: 'dot',
   },
   {
     id: 4,
-    name: "line",
+    name: 'line',
   },
   {
     id: 5,
-    name: "dot",
+    name: 'dot',
   },
 ];
 
@@ -57,43 +57,46 @@ export const dotData = [
 export const firstStepInputs = [
   {
     id: 1,
-    name: "nickname",
-    label: "Никнейм",
-    type: "input",
-    placeholder: "Placeholder",
+    name: 'nickname',
+    label: 'Никнейм',
+    type: 'input',
+    placeholder: 'Placeholder',
+    bg: 'input-bg'
   },
   {
     id: 2,
-    name: "name",
-    label: "Имя",
-    type: "input",
-    placeholder: "Placeholder",
+    name: 'name',
+    label: 'Имя',
+    type: 'input',
+    placeholder: 'Placeholder',
+    bg: 'input-bg'
   },
   {
     id: 3,
-    name: "lastname",
-    label: "Фамилия",
-    type: "input",
-    placeholder: "Placeholder",
+    name: 'lastname',
+    label: 'Фамилия',
+    type: 'input',
+    placeholder: 'Placeholder',
+    bg: 'input-bg'
   },
 ];
 
 export const options = [
   {
     id: 1,
-    value: "Не выбрано",
+    value: 'Не выбрано',
   },
   {
     id: 2,
-    value: "Мужской",
+    value: 'Мужской',
   },
   {
     id: 3,
-    value: "Женский",
+    value: 'Женский',
   },
 ];
 
-export const initialInputs = [{ id: 1, type: "input" }];
+export const initialInputs = [{ id: 1, type: 'input' }];
 
 export const group = [
   {
@@ -106,3 +109,32 @@ export const group = [
     id: 3,
   },
 ];
+
+export const signUpInputs = [
+  {
+    id: 1,
+    name: 'tel',
+    mask: '+7(999) 999-99-99',
+    placeholder: '+7 999 999-99-99',
+    type: 'tel',
+    label: 'Номер телефона',
+    variant: 'long-input',
+  },
+  {
+    id: 2,
+    name: 'email',
+    type: 'email',
+    placeholder: 'webstudio.fractal@example.com',
+    label: 'Email',
+    variant: 'long-input',
+  },
+];
+
+export const textAreaProps = [
+  {
+    id: 1,
+    label:"О себе",
+    placeholder:"Placeholder",
+    name:"about",
+  }
+]

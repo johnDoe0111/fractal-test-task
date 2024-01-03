@@ -1,5 +1,5 @@
-import styles from "./main-layout.module.css";
-import React, { FC } from "react";
+import styles from './main-layout.module.css';
+import React, { FC } from 'react';
 
 interface Props {
   children: React.ReactNode;

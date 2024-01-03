@@ -1,15 +1,13 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { IUserBase, IUserInfo, UserFull } from "models/IUser";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { UserFull } from 'models/IUser';
 
 export const createUser = createAsyncThunk(
-  "userBase",
-  async (userBase: UserFull, thunkAPI) => {
+  'userBase',
+  async (user: UserFull) => {
     try {
-      return userBase;
+      return user;
     } catch (error) {
-      return thunkAPI.rejectWithValue({
-        error: "userBase error",
-      });
+      return error;
     }
   }
 );

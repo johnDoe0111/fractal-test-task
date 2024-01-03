@@ -1,8 +1,8 @@
-import { initialInputs } from "../../consts";
-import { createSlice } from "@reduxjs/toolkit";
+import { initialInputs } from '../../consts';
+import { createSlice } from '@reduxjs/toolkit';
 
 const inputsSlice = createSlice({
-  name: "inputs",
+  name: 'inputs',
   initialState: initialInputs,
   reducers: {
     addInput: (state, action) => {
@@ -11,7 +11,7 @@ const inputsSlice = createSlice({
     },
     deleteInput: (state, action) => {
       const inputIdToRemove = action.payload;
-      return state.filter((input) => input.id !== inputIdToRemove);
+      return state.filter(input => input.id !== inputIdToRemove);
     },
   },
 });
